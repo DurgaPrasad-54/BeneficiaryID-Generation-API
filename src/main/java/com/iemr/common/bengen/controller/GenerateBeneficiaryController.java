@@ -60,7 +60,7 @@ public class GenerateBeneficiaryController {
 		
 			M_BeneficiaryRegidMapping benMapping= InputMapper.gson().
 					fromJson(request, M_BeneficiaryRegidMapping.class);
-			
+			logger.info("ben-api request"+request.toString());
 			List<M_BeneficiaryRegidMapping> list = generateBeneficiaryService
 					.getBeneficiaryIDs(benMapping.getBenIDRequired(), benMapping.getVanID());
 			
