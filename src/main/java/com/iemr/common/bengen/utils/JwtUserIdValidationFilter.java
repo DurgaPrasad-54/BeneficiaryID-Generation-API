@@ -1,5 +1,8 @@
 package com.iemr.common.bengen.utils;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -18,6 +21,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@Profile("!swagger")
+@Component
 public class JwtUserIdValidationFilter implements Filter {
 
 	private final JwtAuthenticationUtil jwtAuthenticationUtil;
