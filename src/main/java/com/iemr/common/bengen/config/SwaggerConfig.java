@@ -36,6 +36,7 @@ import io.swagger.v3.oas.models.servers.Server;
 @Configuration
 public class SwaggerConfig {
 	private static final String DEFAULT_SERVER_URL = "http://localhost:9090";
+	private static final String SECURITY_SCHEME_NAME = "my security";
 
 	@Bean
 	public OpenAPI customOpenAPI(Environment env) {
@@ -47,9 +48,9 @@ public class SwaggerConfig {
 				.title("BeneficiaryID-Generation API")
 				.version("1.0")
 				.description("This service is used to generate unique beneficiary registration Id for new beneficiaries."))
-			.addSecurityItem(new SecurityRequirement().addList("my security"))
-			.components(new Components().addSecuritySchemes("my security",
-				new SecurityScheme().name("my security").type(SecurityScheme.Type.HTTP).scheme("bearer")))
+			.addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME_NAME))
+			.components(new Components().addSecuritySchemes(SECURITY_SCHEME_NAME,
+				new SecurityScheme().name(SECURITY_SCHEME_NAME).type(SecurityScheme.Type.HTTP).scheme("bearer")))
 			.servers(java.util.Arrays.asList(
 				new Server().url(devUrl).description("Dev"),
 				new Server().url(uatUrl).description("UAT"),
